@@ -1,6 +1,84 @@
 [
   {
     "hrefImages": [
+      "https://iamani.com.br/cdn/shop/articles/alecrim1.jpg?v=1744313228"
+    ],
+    "descricao": "Erva morna. Poder magnético no campo do amor, fidelidade e felicidade. Atrai prosperidade, abertura de caminhos, afasta tristeza, revigora, traz clareza mental, destrói o estresse e larvas astrais que possam impedir a caminhada. [Dantas, Fábio]\nEquilibradora por definição, rejuvenesce, alegra, clareia e ilumina. [Camargo, Adriano]",
+    "erva": "Alecrim",
+    "perguntas": [
+      {
+        "enum": "Utilização",
+        "resposta": [
+          "Chás",
+          "Banhos",
+          "Bate-folhas",
+          "Defumação"
+        ]
+      },
+      {
+        "enum": "Temperatura",
+        "resposta": [
+          "Morna"
+        ]
+      },
+      {
+        "enum": "usarOri",
+        "resposta": [
+          "Sim"
+        ]
+      },
+      {
+        "enum": "verbos",
+        "resposta": [
+          "Alegrar",
+          "Clarear",
+          "Energizar",
+          "Equilibrar",
+          "Expiar",
+          "Iluminar",
+          "Limpar",
+          "Purificar",
+          "Rejuvenescer"
+        ]
+      }
+    ]
+  },
+  {
+    "hrefImages": [
+      "https://acdn-us.mitiendanube.com/stores/002/057/003/products/semente-de-alfavaca-183aa252dcc6ba5e4517771367650145-1024-1024.webp"
+    ],
+    "descricao": "Erva morna. Reconstrução dos corpos espirituais após ataques de energias negativas. Combate a irritação física e emocional. Favorece a vidência, amplia a visão e é tranquilizante. [Dantas, Fábio]\nReconstrução após um processo  de doença ou processos de atuação negativa. Limpador leve e concentrador de vibrações de cura e ânimo. [Camargo, Adriano]",
+    "erva": "Alfavaca",
+    "perguntas": [
+      {
+        "enum": "Utilização",
+        "resposta": [
+          "Chás",
+          "Banhos",
+          "Bate-folhas",
+          "Defumação"
+        ]
+      },
+      {
+        "enum": "Temperatura",
+        "resposta": [
+          "Morna"
+        ]
+      },
+      {
+        "enum": "verbos",
+        "resposta": [
+          "Curar",
+          "Energizar",
+          "Equilibrar",
+          "Potencializar",
+          "Regenerar"
+        ]
+      }
+    ]
+  },
+  {
+    "hrefImages": [
       "https://sitiokolibri.com.br/wp-content/uploads/2024/08/louro-laurus-nobilis-3-1024x783.jpg",
       "https://saude.abril.com.br/wp-content/uploads/2017/02/folhas-de-louro.jpg?crop=1&resize=1212,909"
     ],

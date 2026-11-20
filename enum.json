@@ -27,8 +27,19 @@
   "verbos": {
     "enunciado": "Quais são os verbos de atuação dessa erva? [Escolha zero ou mais alternativas]",
     "alternativas": [
+      "Alegrar",
+      "Clarear",
+      "Curar",
+      "Dissolver",
+      "Energizar",
+      "Equilibrar",
+      "Expiar",
+      "Iluminar",
       "Limpar",
-      "Dissolver"
+      "Potencializar",
+      "Purificar",
+      "Regenerar",
+      "Rejuvenescer"
     ]
   }
 }
