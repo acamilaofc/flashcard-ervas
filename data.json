@@ -1,0 +1,38 @@
+[
+  {
+    "hrefImages": [
+      "https://sitiokolibri.com.br/wp-content/uploads/2024/08/louro-laurus-nobilis-3-1024x783.jpg",
+      "https://saude.abril.com.br/wp-content/uploads/2017/02/folhas-de-louro.jpg?crop=1&resize=1212,909"
+    ],
+    "descricao": "Indicações ritualísticas: Firmar o magnetismo de outras ervas, firmeza de propósito, atração material, prosperidade, energia vital masculina.",
+    "erva": "Louro",
+    "perguntas": [
+      {
+        "enum": "Utilização",
+        "resposta": [
+          "Banhos",
+          "Chás"
+        ]
+      },
+      {
+        "enum": "Temperatura",
+        "resposta": [
+          "Fria",
+          "Morna"
+        ]
+      },
+      {
+        "enum": "usarOri",
+        "resposta": [
+          "Sim"
+        ]
+      },
+      {
+        "enum": "verbos",
+        "resposta": [
+          "Limpar"
+        ]
+      }
+    ]
+  }
+]

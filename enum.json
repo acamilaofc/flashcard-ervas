@@ -1,0 +1,34 @@
+{
+  "Temperatura": {
+    "enunciado": "Qual é a temperatura dessa erva? [Escolha uma ou mais alternativas]",
+    "alternativas": [
+      "Fria",
+      "Morna",
+      "Quente"
+    ]
+  },
+  "Utilização": {
+    "enunciado": "De qual forma essa erva pode ser utilizada? [Escolha zero ou mais alternativas]",
+    "alternativas": [
+      "Chás",
+      "Banhos",
+      "Bate-folhas",
+      "Defumação"
+    ]
+  },
+  "usarOri": {
+    "enunciado": "Essa erva pode ser usada no Ori? [Escolha zero ou mais alternativas",
+    "alternativas": [
+      "Sim",
+      "Não",
+      "Combinada com outra erva"
+    ]
+  },
+  "verbos": {
+    "enunciado": "Quais são os verbos de atuação dessa erva? [Escolha zero ou mais alternativas]",
+    "alternativas": [
+      "Limpar",
+      "Dissolver"
+    ]
+  }
+}
