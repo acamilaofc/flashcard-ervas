@@ -3,18 +3,9 @@
     "hrefImages": [
       "https://iamani.com.br/cdn/shop/articles/alecrim1.jpg?v=1744313228"
     ],
-    "descricao": "Erva morna. Poder magnético no campo do amor, fidelidade e felicidade. Atrai prosperidade, abertura de caminhos, afasta tristeza, revigora, traz clareza mental, destrói o estresse e larvas astrais que possam impedir a caminhada. [Dantas, Fábio]\nEquilibradora por definição, rejuvenesce, alegra, clareia e ilumina. [Camargo, Adriano]",
+    "descricao": "Erva morna.\nFinalidades: Prosperidade, abertura de caminhos, afastamento de tristeza, revitalização, clareza mental, desestresse, limpeza leve de larvas astrais, estimular o mental, dispersar o cansaço mental e consciencial, efeito antidepressivo, alegrar, clarear e iluminar.\n\n[Dantas, Fábio]\n[Camargo, Adriano]",
     "erva": "Alecrim",
     "perguntas": [
-      {
-        "enum": "Utilização",
-        "resposta": [
-          "Chás",
-          "Banhos",
-          "Bate-folhas",
-          "Defumação"
-        ]
-      },
       {
         "enum": "Temperatura",
         "resposta": [
@@ -22,9 +13,18 @@
         ]
       },
       {
+        "enum": "Utilização",
+        "resposta": [
+          "Defumação",
+          "Banhos",
+          "Bate-folhas",
+          "Chás"
+        ]
+      },
+      {
         "enum": "usarOri",
         "resposta": [
-          "Sim"
+          "Geralmente sim"
         ]
       },
       {
@@ -32,13 +32,14 @@
         "resposta": [
           "Alegrar",
           "Clarear",
+          "Desestressar",
           "Energizar",
-          "Equilibrar",
-          "Expiar",
+          "Estimular",
           "Iluminar",
-          "Limpar",
-          "Purificar",
-          "Rejuvenescer"
+          "Incentivar",
+          "Prosperar",
+          "Revitalizar",
+          "Limpar"
         ]
       }
     ]
@@ -47,70 +48,26 @@
     "hrefImages": [
       "https://acdn-us.mitiendanube.com/stores/002/057/003/products/semente-de-alfavaca-183aa252dcc6ba5e4517771367650145-1024-1024.webp"
     ],
-    "descricao": "Erva morna. Reconstrução dos corpos espirituais após ataques de energias negativas. Combate a irritação física e emocional. Favorece a vidência, amplia a visão e é tranquilizante. [Dantas, Fábio]\nReconstrução após um processo  de doença ou processos de atuação negativa. Limpador leve e concentrador de vibrações de cura e ânimo. [Camargo, Adriano]",
+    "descricao": "Erva morna. \nFinalidades: Reconstruir corpos espirituais após ataques de energias negativas ou processo de doença, concentrar vibrações de cura e ânimo, combater irritação física e emocional, combater a irritação física e emocional, ampliar a visão, favorecer a vidência e tranquilizar.\n\n[Dantas, Fábio]\n[Camargo, Adriano]\n\n",
     "erva": "Alfavaca",
-    "perguntas": [
-      {
-        "enum": "Utilização",
-        "resposta": [
-          "Chás",
-          "Banhos",
-          "Bate-folhas",
-          "Defumação"
-        ]
-      },
-      {
-        "enum": "Temperatura",
-        "resposta": [
-          "Morna"
-        ]
-      },
-      {
-        "enum": "verbos",
-        "resposta": [
-          "Curar",
-          "Energizar",
-          "Equilibrar",
-          "Potencializar",
-          "Regenerar"
-        ]
-      }
-    ]
+    "perguntas": []
+  },
+  {
+    "hrefImages": [
+      "https://cdn.awsli.com.br/2464/2464021/produto/218759970/lavanda01-mhup50gyg1.jpeg",
+      "https://www.soflor.com.br/wp-content/uploads/2014/07/sementes-de-lavanda-alfazema-15-sementes-6592.jpg"
+    ],
+    "descricao": "Erva morna. \nFinalidades: Atuar no plano astral eliminando maus fluidos e as energias negativas dos ambientes; Limpar de modo geral; Afastar larvas astrais; Meditar; Reativar alegria; Aliviar dores de cabeça, insônia, ansiedade e depressão; Afastar sentimentos de raiva e tensão; Tranquilizar nos negócios e relacionamentos; Harmonizar.\n\n[Dantas, Fábio]\n[Camargo, Adriano]",
+    "erva": "Alfazema-lavanda",
+    "perguntas": []
   },
   {
     "hrefImages": [
       "https://sitiokolibri.com.br/wp-content/uploads/2024/08/louro-laurus-nobilis-3-1024x783.jpg",
       "https://saude.abril.com.br/wp-content/uploads/2017/02/folhas-de-louro.jpg?crop=1&resize=1212,909"
     ],
-    "descricao": "Indicações ritualísticas: Firmar o magnetismo de outras ervas, firmeza de propósito, atração material, prosperidade, energia vital masculina.",
+    "descricao": "Erva morna.\nFinalidades: Atrair prosperidade abrindo portais de abundância em todos os sentidos; Auxiliar no combate ao cansaço e à falta de vitalidade; Afastar energias negativas dos outros; Usar como amuleto de prosperidade guardando na carteira; Firmar o magnetismo de outras ervas; Firmar propósitos; Atrair energia vital masculina.\n\n[Dantas, Fábio]\n[Camargo, Adriano]",
     "erva": "Louro",
-    "perguntas": [
-      {
-        "enum": "Utilização",
-        "resposta": [
-          "Banhos",
-          "Chás"
-        ]
-      },
-      {
-        "enum": "Temperatura",
-        "resposta": [
-          "Fria",
-          "Morna"
-        ]
-      },
-      {
-        "enum": "usarOri",
-        "resposta": [
-          "Sim"
-        ]
-      },
-      {
-        "enum": "verbos",
-        "resposta": [
-          "Limpar"
-        ]
-      }
-    ]
+    "perguntas": []
   }
 ]

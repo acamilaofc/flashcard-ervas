@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Editar ervas — Flashcards de ervas</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css">
+<style>body{background:#f4f6f9}.herb-list{max-height:65vh;overflow:auto}.selected-herb{background:#e8f1ff!important;border-color:#86b7fe!important}.question-item{border:1px solid #dee2e6;border-radius:.85rem;padding:1rem;margin-bottom:.8rem}.question-item .form-check{padding-top:.18rem;padding-bottom:.18rem} .sticky-actions{position:sticky;bottom:0;background:white;border-top:1px solid #dee2e6;padding:1rem 0} [hidden]{display:none!important}</style></head>
+<body><main class="container py-4">
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3"><div><h1 class="h3 mb-1">Editor de ervas</h1><div class="text-secondary">Imagens, descrição e perguntas de <code>data.json</code></div></div><div class="d-flex gap-2"><a class="btn btn-outline-secondary" href="admin-enums.html">Editar categorias</a><a class="btn btn-outline-secondary" href="index.html">Ir à prova</a></div></div>
+<div class="card shadow-sm border-0 mb-3"><div class="card-body d-flex flex-wrap gap-2 align-items-center"><button id="connectFolder" class="btn btn-primary">Conectar pasta do projeto</button><button id="download" class="btn btn-outline-secondary">Baixar data.json</button><span id="folderStatus" class="small text-secondary"></span></div></div>
+<div id="message" class="alert alert-info" role="status">Carregando arquivos...</div>
+<div class="row g-3"><div class="col-lg-4"><div class="card border-0 shadow-sm"><div class="card-header bg-white"><div class="d-flex align-items-center justify-content-between mb-2"><strong>Ervas cadastradas</strong><button id="newHerb" class="btn btn-sm btn-success">+ Nova erva</button></div><input id="search" type="search" class="form-control" placeholder="Pesquisar pelo nome..."></div><div id="herbList" class="list-group list-group-flush herb-list"></div></div></div>
+<div class="col-lg-8"><div class="card border-0 shadow-sm"><div class="card-body"><form id="editor" novalidate>
+<div class="mb-3"><label for="herbName" class="form-label fw-semibold">Nome da erva</label><input id="herbName" class="form-control" placeholder="Ex.: Louro" required></div>
+<div class="mb-3"><label for="images" class="form-label fw-semibold">Links das imagens</label><textarea id="images" rows="3" class="form-control" placeholder="https://exemplo.com/primeira.jpg&#10;https://exemplo.com/segunda.jpg"></textarea><div class="form-text"><strong>Separador: uma URL por linha (Enter).</strong> Cada linha vira um item do array <code>hrefImages</code>.</div></div>
+<div class="mb-3"><label for="description" class="form-label fw-semibold">Descrição oculta / gabarito</label><textarea id="description" rows="4" class="form-control" placeholder="Informações sobre a erva..."></textarea></div>
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2"><div><strong>Questões desta erva</strong><div class="form-text">Escolha as categorias e marque todas as respostas corretas.</div></div><div class="d-flex flex-wrap gap-2"><select id="addQuestionSelect" class="form-select form-select-sm" style="width:auto;max-width:220px" aria-label="Selecionar categoria"></select><button id="addQuestion" type="button" class="btn btn-sm btn-outline-primary">+ Pergunta</button></div></div>
+<div id="questions" class="mb-4"></div>
+<div class="sticky-actions d-flex flex-wrap gap-2"><button type="submit" class="btn btn-primary">Aplicar edição</button><button type="button" id="deleteHerb" class="btn btn-outline-danger">Excluir erva</button><button type="button" id="save" class="btn btn-success ms-auto">Salvar data.json original</button></div>
+</form></div></div></div></div>
+</main><script src="admin-common.js"></script><script>
+(() => {
+  'use strict';
+  const A=window.FlashAdmin,$=A.$;
+  let herbs=[],enums={},selected=-1,questionDraft=[],dirty=false;
+  const blank=()=>({hrefImages:[],descricao:'',erva:'',perguntas:[]});
+  function drawList(){
+    const query=$('search').value.trim().toLocaleLowerCase('pt-BR');
+    $('herbList').replaceChildren();
+    herbs.forEach((herb,i)=>{
+      if(!herb.erva.toLocaleLowerCase('pt-BR').includes(query))return;
+      $('herbList').append(A.btn(herb.erva||`Erva ${i+1}`,'list-group-item list-group-item-action text-start'+(i===selected?' selected-herb':''),()=>select(i)));
+    });
+    $('save').disabled=!dirty;
+    $('deleteHerb').disabled=selected<0;
+  }
+  function updatePicker(){
+    const picker=$('addQuestionSelect');picker.replaceChildren();
+    const used=new Set(questionDraft.map(q=>q.enum));
+    for(const [key,item] of Object.entries(enums))if(!used.has(key))picker.add(new Option(`${key}: ${item.enunciado}`,key));
+    $('addQuestion').disabled=!picker.options.length;
+  }
+  function drawQuestions(){
+    const container=$('questions');container.replaceChildren();
+    for(const [index,q] of questionDraft.entries()){
+      const category=enums[q.enum];if(!category)continue;
+      const section=document.createElement('section');section.className='question-item';
+      const heading=document.createElement('div');heading.className='d-flex justify-content-between align-items-start gap-2 mb-2';
+      A.addText(heading,'strong',`${category.enunciado} (${q.enum})`);
+      heading.append(A.btn('Remover','btn btn-sm btn-outline-danger',()=>{questionDraft.splice(index,1);drawQuestions();}));section.append(heading);
+      for(const [n,answer] of category.alternativas.entries()){
+        const row=document.createElement('div');row.className='form-check';
+        const input=document.createElement('input');input.type='checkbox';input.className='form-check-input';input.id=`q-${index}-${n}`;input.checked=q.resposta.includes(answer);
+        input.addEventListener('change',()=>{if(input.checked)q.resposta.push(answer);else q.resposta=q.resposta.filter(x=>x!==answer);});
+        const label=document.createElement('label');label.className='form-check-label';label.htmlFor=input.id;label.textContent=answer;
+        row.append(input,label);section.append(row);
+      }
+      container.append(section);
+    }
+    if(!questionDraft.length)A.addText(container,'p','Nenhuma pergunta selecionada. Adicione uma categoria acima.','text-secondary');
+    updatePicker();
+  }
+  function select(i){
+    selected=i;
+    const herb=i<0?blank():herbs[i];
+    $('herbName').value=herb.erva;$('images').value=herb.hrefImages.join('\n');$('description').value=herb.descricao;
+    questionDraft=A.copy(herb.perguntas);drawList();drawQuestions();
+  }
+  function commitDraft(){
+    const value={hrefImages:A.splitLines($('images').value),descricao:$('description').value,erva:$('herbName').value.trim(),perguntas:A.copy(questionDraft)};
+    if(!value.erva)throw new Error('Informe o nome da erva.');
+    const proposed=A.copy(herbs);
+    if(selected<0)proposed.push(value);else proposed[selected]=value;
+    const errors=A.validation(proposed,enums);
+    if(errors.length)throw new Error(errors.join(' | '));
+    herbs=proposed;dirty=true;select(selected<0?herbs.length-1:selected);
+    A.msg('Erva aplicada em memória. Clique em Salvar data.json original para gravar.','success');
+  }
+  function load(){herbs=A.copy(A.store.data);enums=A.copy(A.store.enums);dirty=false;$('search').value='';select(herbs.length?0:-1);A.msg('Dados carregados. Selecione uma erva ou cadastre uma nova.','success');}
+  $('newHerb').addEventListener('click',()=>{select(-1);$('herbName').focus();});
+  $('addQuestion').addEventListener('click',()=>{const key=$('addQuestionSelect').value;if(!key)return;questionDraft.push({enum:key,resposta:[]});drawQuestions();});
+  $('editor').addEventListener('submit',e=>{e.preventDefault();try{commitDraft();}catch(err){A.msg(err.message,'danger');}});
+  $('deleteHerb').addEventListener('click',()=>{
+    if(selected<0)return;
+    if(!confirm(`Excluir a erva "${herbs[selected].erva}"?`))return;
+    herbs.splice(selected,1);dirty=true;select(herbs.length?Math.min(selected,herbs.length-1):-1);A.msg('Erva excluída em memória. Salve para confirmar.','warning');
+  });
+  $('save').addEventListener('click',async()=>{
+    try{
+      const errors=A.validation(herbs,enums);if(errors.length)throw new Error(errors.join(' | '));
+      await A.save('data.json',herbs);dirty=false;drawList();A.msg('data.json original sobrescrito com sucesso.','success');
+    }catch(err){A.msg('Não foi possível salvar: '+err.message,'danger');}
+  });
+  $('download').addEventListener('click',()=>A.download('data.json',herbs));
+  $('search').addEventListener('input',drawList);
+  A.setup(()=>{if(dirty&&!confirm('Descartar edições ainda não salvas?'))return;load();});
+  A.load().then(load).catch(err=>A.msg('Não foi possível carregar os JSONs. Conecte a pasta do projeto. '+err.message,'warning'));
+})();
+</script></body></html>

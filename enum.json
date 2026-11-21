@@ -10,36 +10,45 @@
   "Utilização": {
     "enunciado": "De qual forma essa erva pode ser utilizada? [Escolha zero ou mais alternativas]",
     "alternativas": [
-      "Chás",
+      "Amuleto",
       "Banhos",
       "Bate-folhas",
+      "Chás",
       "Defumação"
     ]
   },
   "usarOri": {
     "enunciado": "Essa erva pode ser usada no Ori? [Escolha zero ou mais alternativas",
     "alternativas": [
-      "Sim",
+      "Geralmente sim",
       "Não",
-      "Combinada com outra erva"
+      "Combinada com outra erva",
+      "Em casos específicos"
     ]
   },
   "verbos": {
     "enunciado": "Quais são os verbos de atuação dessa erva? [Escolha zero ou mais alternativas]",
     "alternativas": [
       "Alegrar",
+      "Atrair",
       "Clarear",
+      "Crescer",
       "Curar",
+      "Desestressar",
       "Dissolver",
       "Energizar",
       "Equilibrar",
+      "Estimular",
       "Expiar",
       "Iluminar",
+      "Incentivar",
       "Limpar",
       "Potencializar",
+      "Prosperar",
       "Purificar",
       "Regenerar",
-      "Rejuvenescer"
+      "Rejuvenescer",
+      "Revitalizar"
     ]
   }
 }
